@@ -36,6 +36,7 @@ if __name__ == "__main__":
 
     parser.add_argument('--checkpoints_path', type=str, default='./checkpoints')
     parser.add_argument('--train_path', type=str, default='./data/train')
+    parser.add_argument('--dataset', type=str, default='abdom_ct')
     parser.add_argument('--tensorboard_path', type=str, default='./tensorboard')
     parser.add_argument('--results_path', type=str, default='./results')
 

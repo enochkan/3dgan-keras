@@ -2,7 +2,7 @@ from models import Generator, Discriminator
 from keras.optimizers import Adam
 from keras.layers import Input
 from keras.models import Model
-from dataloader import data_loader
+from dataloader import DataLoader
 import numpy as np
 
 def train(args):
@@ -27,9 +27,11 @@ def train(args):
     combined.compile(loss='binary_crossentropy', optimizer=gen_optim)
 
     # load data
-    (X_train, _), (_, _) = data_loader.load_data()
+    data_loader = DataLoader(args)
+    X_train = data_loader.load_data()
 
     for epoch in range(args.num_epochs):
+        #sample a random batch
         idx = np.random.randint(len(X_train), size=args.batch_size)
         real = X_train[idx]
 
