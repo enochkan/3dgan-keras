@@ -11,4 +11,4 @@ To test, simply run ```python main.py --mode=test``` and specify the ```test_epo
 - [ ] add tensorboard
 
 ## Author
-Chi Nok Enoch Kan/ [@kanxx030](https://github.com/kanxx030)
+Chi Nok Enoch Kan/ [@kanxx030](https://github.com/chinokenochkan)
