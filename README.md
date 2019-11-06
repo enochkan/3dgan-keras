@@ -5,6 +5,9 @@ Run ```python main.py``` to train, don't forget to put your volumes under ```/da
 
 To test, simply run ```python main.py --mode=test``` and specify the ```test_epoch``` you want.
 
+## Versions
+keras == 2.2.4
+
 ## Todo
 - [ ] dataloader
 - [ ] test scripts
