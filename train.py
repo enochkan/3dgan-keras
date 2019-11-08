@@ -34,7 +34,7 @@ def train(args):
     # load data
     data_loader = DataLoader(args)
     X_train = np.array(data_loader.load_data()).astype(np.float32)
-
+    dl, gl = [],[]
     for epoch in range(args.num_epochs):
         #sample a random batch
         idx = np.random.randint(len(X_train), size=args.batch_size)
@@ -59,13 +59,16 @@ def train(args):
         d_loss = 0.5*np.add(d_loss_real, d_loss_fake)
 
         z = np.random.normal(0, 0.33, size=[args.batch_size, 1, 1, 1, args.latent_dim]).astype(np.float32)
-        discriminator.trainable = False
 
         # calculate generator loss
-        g_loss = combined.train_on_batch(z, np.reshape([1] * args.batch_size, (-1, 1, 1, 1, 1)))
-        discriminator.trainable = True
+        g_loss = combined.train_on_batch(z, np.reshape([1] * args.batch_size, (-1, 1, 1, 1, 1))).astype(np.float64)
 
-        print('Training epoch {}/{}, d_loss_real: {}, g_loss: {}'.format(epoch+1,args.num_epochs,d_loss,g_loss))
+        dl.append(d_loss)
+        gl.append(g_loss)
+        avg_d_loss = round(sum(dl)/len(dl), 4)
+        avg_g_loss = round(sum(gl)/len(gl), 4)
+
+        print('Training epoch {}/{}, d_loss_real/avg: {}/{}, g_loss/avg: {}/{}'.format(epoch+1, args.num_epochs, round(d_loss, 4), avg_d_loss, round(g_loss, 4), avg_g_loss))
 
         # sampling
         if epoch % args.sample_epoch == 0:

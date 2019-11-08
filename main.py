@@ -32,7 +32,7 @@ if __name__ == "__main__":
     parser.add_argument('--num_workers', type=int, default=4)
 
     parser.add_argument('--save_epoch', type=int, default=1000)
-    parser.add_argument('--sample_epoch', type=int, default=5)
+    parser.add_argument('--sample_epoch', type=int, default=500)
     parser.add_argument('--test_epoch', type=int, default=100)
 
     parser.add_argument('--checkpoints_path', type=str, default='./checkpoints')
