@@ -9,7 +9,7 @@ To test, simply run ```python main.py --mode=test``` and specify the ```test_epo
 keras == 2.2.4
 
 ## Todo
-- [ ] dataloader
+- [X] dataloader
 - [ ] test scripts
 - [ ] add tensorboard
 
